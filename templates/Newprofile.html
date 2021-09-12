@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile - Brand</title>
+    <link rel="stylesheet" href="{% static 'profile/assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'profile/assets/fonts/fontawesome-all.min.css'%}">
+    <link rel="stylesheet" href="{% static 'profile/assets/fonts/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'profile/assets/fonts/ionicons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'profile/assets/fonts/fontawesome5-overrides.min.css'%}">
+    <link rel="stylesheet" href="{% static 'profile/assets/css/Animation-Cards-1.css'%}">
+    <link rel="stylesheet" href="{% static 'profile/assets/css/Animation-Cards.css'%}">
+    <link rel="stylesheet" href="{% static 'profile/assets/css/Button-Ribbon-Effect.css'%}">
+    <link rel="stylesheet" href="{% static 'profile/assets/css/gradient-navbar-1.css'%}">
+    <link rel="stylesheet" href="{% static 'profile/assets/css/gradient-navbar.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="background-image: url(/static/profile/assets/img/beautiful-color-gradients-backgrounds-091-eternal-constance.png);">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="icon ion-ios-infinite" id="brand-logo"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1" style="padding-right: 15px;">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'dashboard' %}" style="padding-right: 30px;">Dashboard</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'advice'%}" style="padding-right: 30px;">Advice</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'quiz'%}" style="padding-right: 30px;">Test Yourself</a></li>
+                    <li class="nav-item dropdown" style="height: auto;font-size: 15px; color:white"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="color:white;">Welcome , {{request.user}}&nbsp;<img class="border rounded-circle img-profile" src="{{ request.user.profile.profile_pic.url}}" style="height: 28px;width: 28px;"></a>
+                        <div class="dropdown-menu" role="menu" id="dropdonw-items"><a class="dropdown-item" role="presentation" href="{% url 'logout' %}">Logout</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper" style="background-color: rgba(128,128,128,0.19);">
+            <div id="content">
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4" style="margin-top: 24px;">Profile</h3>
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+
+                                <p><input class="form-control" type="email" value="{{user.email}}" name="email"></p>
+                                <form method="POST" enctype="multipart/form-data">
+                                     {% csrf_token %}
+
+<!--                                     <input name="update information" type="submit">-->
+                                    <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="{{ request.user.profile.profile_pic.url}}" width="160" height="160" style="width: 250px;height: 250px;">
+                                        <input type="file" name="profile_pic" accept="image/*" id="id_profile_pic">
+                                        <p>{{pic_form.errors}}</p>
+                                        <div class="mb-3">
+<!--                                            {{pic_form.as_p}}-->
+                                            <input class="btn btn-primary btn-sm" name="form2" type="submit">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card shadow mb-3">
+
+                                <div class="card-body">
+
+                                    <form method="POST">
+                                          {% csrf_token %}
+<!--                                            {{password.as_p}}-->
+                                        <div class="col">
+                                            <div class="form-group"><label for="username"><strong>Old Password</strong></label><input class="form-control" type="password" name="old_password"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="email"><strong>New Password</strong></label><input class="form-control" name="new_password1" type="password"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group"><label for="first_name"><strong>Repeat New Password</strong></label><input name="new_password2" class="form-control" type="password"></div>
+                                        </div>
+<!--                                        {{messages}}-->
+                                        {{password.errors}}
+<!--                                        {{messages}}-->
+                                        <div class="form-group"><input class="btn btn-primary btn-block ribbon" name="form3" type="submit"></div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="row mb-3 d-none">
+                                <div class="col">
+                                    <div class="card text-white bg-primary shadow">
+                                        <div class="card-body">
+                                            <div class="row mb-2">
+                                                <div class="col">
+                                                    <p class="m-0">Peformance</p>
+                                                    <p class="m-0"><strong>65.2%</strong></p>
+                                                </div>
+                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                            </div>
+                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card text-white bg-success shadow">
+                                        <div class="card-body">
+                                            <div class="row mb-2">
+                                                <div class="col">
+                                                    <p class="m-0">Peformance</p>
+                                                    <p class="m-0"><strong>65.2%</strong></p>
+                                                </div>
+                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                            </div>
+                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-3" style="height: 280px;">
+                                        <div class="card-header py-3" style="height: 66px;background-color: rgb(255,255,255);">
+                                            <p class="text-primary m-0 font-weight-bold">User Settings</p>
+                                        </div>
+                                        <div class="card-body" style="margin-top: 21px;">
+                                            <form method="POST" enctype="multipart/form-data" >
+                                                {% csrf_token %}
+                                                <div class="form-row">
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="username"><strong>Username</strong></label>
+                                                            <input class="form-control" type="text" value="{{user.username}}" name="username">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col">
+                                                        <div class="form-group"><label for="email"><strong>Email Address</strong></label>
+                                                            <input class="form-control" type="email" value="{{user.email}}" name="email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary btn-sm" type="submit"  name="form1" style="margin-top: 6px;">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow">
+                                        <div class="card-header py-3" style="background-color: rgb(255,255,255);height: 49px;">
+                                            <p class="text-primary m-0 font-weight-bold">Basic Info</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col" style="margin-top: -53px;">
+                                                <div class="row space-rows">
+                                                    <div class="col">
+                                                        <div class="card cards-shadown cards-hover" data-aos="slide-right" data-aos-duration="950">
+                                                            <div class="card-body">
+                                                                <p class="card-text sub-text-color">Account Created:</p>
+                                                                <p class="card-text cardbody-sub-text">{{user.date_joined}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card cards-shadown cards-hover" data-aos="flip-up" data-aos-duration="950">
+                                                            <div class="card-body">
+                                                                <p class="card-text sub-text-color">Last activity:</p>
+                                                                <p class="card-text cardbody-sub-text">{{user.last_login}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 offset-xl-3"><a href="{% url 'delete_account' %}" class="btn btn-primary btn-block ribbon" type="button">Delete Account</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer" style="background-color: rgb(235,11,11);">
+                <div class="container my-auto">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-4 col-xl-4 item text" style="margin-top: 4px;"><a href="#"><img style="height: 79px;width: 136px;background-color: rgba(255,255,255,0);background-image: url(&quot;assets/img/phishing_email.png&quot;);" src="/static/quiz/assets/img/phishing_email.png"></a><span style="background-color: rgba(40,45,50,0);font-size: 15px;margin-left: 16px;">&nbsp;Phishing Email</span></div>
+                        <div
+                            class="col-sm-4 col-md-5 col-xl-3 offset-xl-1">
+                            <h3 class="text-left d-xl-flex" style="margin-top: 13px;width: 204px;margin-left: 25px;">Pages</h3>
+                            <ul style="list-style-type: none;">
+                                    <li><a href="{% url 'dashboard'%}">Dashboard</a></li>
+                                    <li><a href="{% url 'advice'%}">Advice</a></li>
+                                    <li><a href="{% url 'quiz'%}">Test yourself</a></li>
+                            </ul>
+                    </div>
+                    <div class="col-sm-5 col-md-3 col-xl-3 offset-xl-1 item">
+                        <h3 style="margin-top: 13px;margin-left: 24px;">Help</h3>
+                        <ul style="list-style-type: none;">
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Contact US</a></li>
+                            <li><span style="margin-right: 35px;margin-left: 5px;"><i class="fa fa-facebook-official"></i></span><span style="margin-left: 2px;"><i class="fa fa-twitter"></i></span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center my-auto copyright"><span><br>Shashank Ravikumar © 2020 &nbsp;Catching the Phish UEA<br><br></span></div>
+        </div>
+        </footer>
+    </div>
+    </div>
+
+
+
+
+    <script src="{% static 'profile/assets/js/jquery.min.js'%}"></script>
+    <script src="{% static 'profile/assets/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'profile/assets/js/bs-init.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'profile/assets/js/theme.js'%}"></script>
+</body>
+
+</html>

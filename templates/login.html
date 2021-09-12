@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+
+
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login - Brand</title>
+    <link rel="stylesheet" href="{% static 'loginPage/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="{% static 'loginPage/assets/css/Animated-Heading---Left-Aligned.css' %}">
+    <link rel="stylesheet" href="{% static 'loginPage/assets/css/Animated-Type-Heading.css' %}">
+    <link rel="stylesheet" href="{% static 'loginPage/assets/css/Button-Ribbon-Effect.css' %}">
+    <link rel="stylesheet" href="{% static 'loginPage/assets/css/Navigation-with-Button.css' %}">
+    <link rel="stylesheet" href="{% static 'loginPage/assets/css/untitled.css' %}">
+</head>
+
+<body class="bg-gradient-primary" style="background-size: cover;background-position: bottom;">
+    <div class="container mb-auto" style="filter: blur(0px) brightness(95%);">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10" style="margin-top: 150px;">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body shadow-lg p-0">
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-flex">
+                                <div class="flex-grow-1 bg-login-image" style="background-image: url(/static/loginPage/assets/img/asoggetti-IuSemNxGS88-unsplash.jpg);background-size: cover;filter: brightness(105%) contrast(86%) grayscale(24%);">
+                                    <h1 class="text-center d-xl-flex justify-content-xl-center" style="height: 50px;margin-top: 68px;margin-bottom: -68px;margin-right: 50px;margin-left: 50px;color: rgb(228,228,228);font-size: 44px;">Phishing Quiz&nbsp;</h1>
+                                    <div class="d-flex m-5"><a href="{% url 'signup' %}" class="btn btn-primary btn-block d-xl-flex justify-content-xl-center ribbon" type="button" style="margin-top: 126px;">Create Account</a></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4">Welcome Back!</h4>
+                                    </div>
+                                    <form method="POST" class="user">
+                                                    {% csrf_token %}
+                                        <div class="form-group"><input class="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username..." name="username"></div>
+                                        <div class="form-group"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
+
+                                        <p style=" text-align:center;
+    font-size: 23px;
+    position: relative;
+    color: red;
+    ">{{error}}</p>
+                                        {% if messages %}
+                                            <ul>
+                                                {% for message in messages %}
+                                                    <li>{{ message }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+
+
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                            </div>
+                                        </div><button class="btn btn-primary btn-block text-white btn-user" type="submit">Login</button>
+                                        <hr>
+                                    </form>
+                                    <div class="text-center"><a class="small" href="{% url 'reset_password' %}">Forgot Password?</a></div>
+                                    <div class="text-center visible" id="createAccount"><a class="small" href="{% url 'signup' %}">Create Account ?</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'loginPage/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'loginPage/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'loginPage/assets/js/Animated-Type-Heading.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'loginPage/assets/js/theme.js' %}"></script>
+</body>
+
+</html>
+
+
+
+

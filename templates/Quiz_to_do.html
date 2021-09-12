@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blank Page - Brand</title>
+    <link rel="stylesheet" href="{% static 'quiz/To_do/Quiz1_to_do/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'quiz/To_do/Quiz1_to_do/fonts/ionicons.min.css' %}">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="background-image: url(/static/quiz/To_do/Quiz1_to_do/img/beautiful-color-gradients-backgrounds-091-eternal-constance.png);">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="icon ion-ios-infinite" id="brand-logo"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1" style="padding-right: 15px;">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'dashboard'%}" style="padding-right: 30px;">Dashboard</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'advice'%}" style="padding-right: 30px;">Advice</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="padding-right: 30px;">Test Yourself</a></li>
+                    <li class="nav-item dropdown" style="height: auto;font-size: 15px;"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgba(255,255,255,0.71);">Welcome , {{request.user}}&nbsp;<img class="border rounded-circle img-profile" src="{{ request.user.profile.profile_pic.url}}" style="height: 28px;width: 28px;"></a>
+                        <div
+                            class="dropdown-menu" role="menu" id="dropdonw-items"><a class="dropdown-item" role="presentation" href="{% url 'profile'%}">Profile</a><a class="dropdown-item" role="presentation" href="{% url 'logout'%}">Logout</a></div>
+        </li>
+        </ul>
+        </div>
+        </div>
+    </nav>
+    <div id="content">
+        {% if question is None %}
+
+            <div style="background-image: url('/static/img/nasa-Yj1M5riCKk4-unsplash.jpg');height: 511px;background-size: cover;background-position: 0%  48%;margin-right: 140px;margin-left: 140px;margin-top: 59px;">
+                <div class="col" style="padding-top: 177px;">
+                    <div class="row">
+            <div class="col">
+                <h1 id="heading1" style="color: rgb(224,224,224);font-size: 32px;text-align:center;">You answered all your questions for the quiz.</h1>
+            </div>
+        </div>
+                    <div class="row">
+                        <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-10 offset-2 offset-sm-3 offset-md-4 offset-lg-4 offset-xl-1 d-sm-flex d-lg-flex justify-content-sm-center justify-content-lg-center" style="padding-top: 50px;"><a href ="{% url 'quiz'%}"  ><button class="btn btn-primary d-xl-flex m-auto" id="button1" type="button"><img style="width: 20px;height: 20px;transform: rotate(270deg) translateX(2px);margin-top: 8px;" src="/static/img/arrowwhite.gif" /><span><strong>Return to Quiz Page </strong></span><img style="width: 20px;height: 20px;transform: rotate(90deg) translateX(-2px);margin-top: 8px;" src="/static/img/arrowwhite.gif" /></button></a></div>
+        </div>
+                </div>
+            </div>
+
+        {% else %}
+
+        <div class="container">
+  <div class="jumbotron my-4">
+
+    <h3 class="text-info">{{ question.html|safe }}</h3>
+    <form class="form" action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="question_pk" value="{{ question.pk }}">
+        {% for choice in question.choices.all %}
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="choice_pk" id="choice-{{ forloop.counter }}" value="{{ choice.pk }}">
+            <label class="form-check-label" for="choice-{{ forloop.counter }}">
+              {{ choice.html|safe }}
+            </label>
+          </div>
+        {% endfor %}
+        <input class="btn btn-info btn-lg" type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+        {% endif %}
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span><br>Shashank Ravikumar © 2020 &nbsp;Catching the Phish UEA<br><br><br></span></div>
+        </div>
+    </footer>
+    <script src="{% static 'quiz/To_do/Quiz1_to_do/js/jquery.min.js' %}"></script>
+    <script src="{% static 'quiz/To_do/Quiz1_to_do/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'quiz/To_do/Quiz1_to_do/js/theme.js' %}/"></script>
+</body>
+
+
+
+</html>

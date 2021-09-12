@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blank Page - Brand</title>
+    <link rel="stylesheet" href="{% static 'quiz2/slideshow/assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'quiz2/slideshow/assets/fonts/ionicons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'quiz2/slideshow/assets/css/untitled.css'%}">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="background-image: url(/static/quiz/assets/img/beautiful-color-gradients-backgrounds-091-eternal-constance.png);">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="icon ion-ios-infinite" id="brand-logo"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1" style="padding-right: 15px;">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'dashboard'%}" style="padding-right: 30px;">Dashboard</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'advice'%}" style="padding-right: 30px;">Advice</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="" style="padding-right: 30px;">Test Yourself</a></li>
+                    <li class="nav-item dropdown" style="height: auto;font-size: 15px;"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgba(255,255,255,0.71);">Welcome , {{request.user}}&nbsp;<img class="border rounded-circle img-profile" src="{{ request.user.profile.profile_pic.url}}" style="height: 28px;width: 28px;"></a>
+                        <div
+                            class="dropdown-menu" role="menu" id="dropdonw-items"><a class="dropdown-item" role="presentation" href="{% url 'profile'%}">Profile</a><a class="dropdown-item" role="presentation" href="{% url 'logout'%}">Logout</a></div>
+        </li>
+        </ul>
+        </div>
+        </div>
+    </nav>
+    <div id="content">
+
+        {% if question is None %}
+            <div style="background-image: url('/static/img/nasa-Yj1M5riCKk4-unsplash.jpg');height: 511px;background-size: cover;background-position: 0%  48%;margin-right: 140px;margin-left: 140px;margin-top: 59px;">
+                <div class="col" style="padding-top: 177px;">
+                    <div class="row">
+            <div class="col">
+                <h1 id="heading1" style="color: rgb(224,224,224);font-size: 32px;text-align:center;">You answered all your questions for the quiz.</h1>
+            </div>
+        </div>
+                    <div class="row">
+                        <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-10 offset-2 offset-sm-3 offset-md-4 offset-lg-4 offset-xl-1 d-sm-flex d-lg-flex justify-content-sm-center justify-content-lg-center" style="padding-top: 50px;"><a href ="{% url 'quiz'%}"  ><button class="btn btn-primary d-xl-flex m-auto" id="button1" type="button"><img style="width: 20px;height: 20px;transform: rotate(270deg) translateX(2px);margin-top: 8px;" src="/static/img/arrowwhite.gif" /><span><strong>Return to Quiz Page </strong></span><img style="width: 20px;height: 20px;transform: rotate(90deg) translateX(-2px);margin-top: 8px;" src="/static/img/arrowwhite.gif" /></button></a></div>
+        </div>
+                </div>
+            </div>
+
+        {% else %}
+
+
+        <div class="container-fluid">
+            <div class="col">
+                <div class="card shadow mb-3" style="height: 749px;margin-top: 80px;">
+                    <div class="card-header py-3">
+                        <div class="col-xl-10 offset-xl-1">
+                            <p class="text-center text-primary m-0 font-weight-bold" style="font-size: 22px;">{{ question.html|safe }}</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" >
+                            {% csrf_token %}
+                            <input type="hidden" name="question_pk" value="{{ question.pk }}">
+                            <div class="col-xl-10 offset-xl-1" style="font-size: 23px;">
+                                <div class="form-row">
+                                    <div class="col d-xl-flex m-auto justify-content-xl-center"><img src="{{ question.image.url }}" style="width: 884px;height: 353px;"></div>
+                                </div>
+                                {% for choice in question.choices.all %}
+                                <div class="form-row" style="margin-top: 28px;">
+                                    <div class="col-xl-3 offset-xl-3 d-sm-flex d-lg-flex d-xl-flex justify-content-sm-center justify-content-lg-center justify-content-xl-center">
+                                        <div class="form-check d-xl-flex"><input class="form-check-input" type="radio" name="choice_pk" id="choice-{{ forloop.counter }}" value="{{ choice.pk }}"><label class="form-check-label" for="choice-{{ forloop.counter }}">{{ choice.html|safe }}</label></div>
+                                    </div>
+<!--                                    <div class="col-xl-3 offset-xl-0 d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center">-->
+<!--                                        <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">True</label></div>-->
+<!--                                    </div>-->
+                                </div>
+                                  {% endfor %}
+                            </div>
+                            <div class="form-row" style="margin-top: 26px;">
+                                <div class="col-xl-2 offset-xl-3">
+                                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Show Help</button>
+                                        <div class="dropdown-menu" role="menu" style="height: 64px;width: 574px;">
+                                            <div class="col">
+                                                <p style="padding-top: 11px;">{{ question.hint }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-6 offset-md-4 offset-lg-5 offset-xl-3 d-flex d-sm-flex d-md-flex d-xl-flex justify-content-center justify-content-sm-center justify-content-md-center justify-content-xl-center" style="margin-top: 104px;">
+                                <div class="form-group"> <input class="btn btn-primary" type="submit" style="width: 135px;height: 41px;font-size: 19px;"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span><br>Shashank Ravikumar © 2020 &nbsp;Catching the Phish UEA<br><br><br></span></div>
+        </div>
+    </footer>
+    <script src="{% static 'quiz2/slideshow/assets/js/jquery.min.js'%}"></script>
+    <script src="{% static 'quiz2/slideshow/assets/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'quiz2/slideshow/assets/js/theme.js'%}"></script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Brand</title>
+    <link rel="stylesheet" href="{% static 'advice/assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'advice/assets/fonts/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/fonts/ionicons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Advanced-NavBar---Multi-dropdown.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Animated-Pretty-Product-List.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Animated-Type-Heading.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Bold-BS4-Footer-Social.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Button-Ribbon-Effect.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Button-Ripple-Effect-Animation-Wave-Pulse.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Dark-Footer-1.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Dark-Footer-2.css'%}">
+
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Dark-Footer-4.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Dark-Footer-5.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Dark-Footer.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Footer-with-social-media-icons-1.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/Footer-with-social-media-icons.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/gradient-navbar-1.css'%}">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/gradient-navbar.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="{% static 'advice/assets/css/untitled.css'%}">
+    <link rel="stylesheet" href="assets/css/Video-Parallax-Background-v2.css">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="background-image: url(/static/advice/assets/img/beautiful-color-gradients-backgrounds-091-eternal-constance.png);">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="icon ion-ios-infinite" id="brand-logo"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1" style="padding-right: 15px;">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'dashboard' %}" style="padding-right: 30px;">Dashboard</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="padding-right: 30px;">Advice</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'quiz' %}" style="padding-right: 30px;">Test Yourself</a></li>
+                    <li class="nav-item dropdown" style="height: auto;font-size: 15px;"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="" style="color: rgba(255,255,255,0.71);">Welcome , {{request.user}}&nbsp;<img class="border rounded-circle img-profile" src="{{ request.user.profile.profile_pic.url}}" style="height: 28px;width: 28px;"></a>
+
+                        <div class="dropdown-menu" role="menu" id="dropdonw-items">
+                            <a class="dropdown-item" role="presentation" href="{% url 'profile' %}">Profile</a>
+                            <a class="dropdown-item" role="presentation" href="{% url 'logout' %}">Logout</a>
+                        </div>
+        </li>
+        </ul>
+        </div>
+        </div>
+    </nav>
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper" style="background-image: url(&quot;assets/img/charles-deluvio-Lks7vei-eAg-unsplash.png&quot;);background-size: cover;background-position: center;">
+            <div id="content" style="margin-top: 49px;">
+                <div class="container-fluid">
+                    <div class="card shadow" style="background-color: rgba(255,255,255,0.73);margin-bottom: 55px;">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold" style="font-size: 40px;">Advice</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-6 offset-xl-0">
+                                    <section style="margin-top: 28px;">
+                                        <h1 class="float-none m-auto pulse animated" style="font-size: 35px;">Ways to detect Phishing&nbsp;</h1>
+                                        <ul class="list-group" style="margin-top: 17px;">
+                                            <li class="list-group-item">
+                                                <h1 style="font-size: 15px;margin-bottom: -8px;"><br><strong>Do you know the sender?</strong><br></h1><span style="font-size: 14px;"><br>If the message seems to come from a person or an agency you know (your boss, your friend, your bank, ...), check the email address and check if it is the same address used by the person you know, and if this address does not contain spelling mistakes.&nbsp;Otherwise, it is most likely a phishing message.&nbsp;But beware, a legitimate email address still does not offer any guarantees as to the veracity of the email.<br><br></span></li>
+                                            <li
+                                                class="list-group-item">
+                                                <h1 style="font-size: 15px;margin-bottom: -8px;"><br><strong>Is the message misspelled?</strong><br></h1><span style="font-size: 14px;"><br>If the message contains spelling errors or grammatical errors, then be careful, it may be a phishing message.&nbsp;Even if malicious cybercriminals try to use correct language, mistakes or the use of a foreign language can be a sign of a suspicious message.<br><br></span></li>
+                                                <li
+                                                    class="list-group-item">
+                                                    <h1 style="font-size: 15px;margin-bottom: -28px;"><br><strong>What to Do If You Responded to a Phishing Email</strong><br></h1><span style="font-size: 14px;"><br><br>If you think a scammer has your information, like your Social Security, credit card, or bank account number, go to <a href="https://www.identitytheft.gov/Info-Lost-or-Stolen">IdentityTheft.gov</a>. There you’ll see the specific steps to take based on the information that you lost.If you think you clicked on a link or opened an attachment that downloaded harmful software, <a href="https://www.consumer.ftc.gov/articles/0009-computer-security#update">update your computer’s security software</a>. Then run a scan.<br><br></span></li>
+                                                    <li
+                                                        class="list-group-item">
+                                                        <h1 style="font-size: 15px;margin-bottom: -15px;"><br><strong>What if you've already fallen into the trap of a Phishisng Email?</strong><br><br></h1><span style="font-size: 14px;"><br>Do not open emails which you suspect as being scams.Do not forward emails which you suspect as being scams.Do not open attachments from unknown sources.<br><br></span></li>
+                                                        <li
+                                                            class="list-group-item">
+                                                            <h1 style="font-size: 15px;margin-bottom: -15px;"><strong>&nbsp;Don’t trust the header from email address</strong><br><br></h1><span style="font-size: 14px;"><br>Fraudsters not only spoof brands in the display name, but spoof&nbsp; the header from email address, including the domain name. Keep in mind that just because the sender’s email address looks legitimate (e.g sendername@yourcompany.com), it may not be. A familiar name in your inbox isn’t always who you think it is!<br><br></span></li>
+                                                            <li
+                                                                class="list-group-item">
+                                                                <h1 style="font-size: 15px;margin-bottom: -27px;"><br><strong>What should you do if you’ve received a scam email?</strong><br><br></h1>
+                                                                <ul style="margin-top: 28px;font-size: 14px;">
+                                                                    <li style="padding-bottom: 6px;font-weight: bold;">Do not click on any links in the scam email.<br></li>
+                                                                    <li style="padding-bottom: 6px;font-weight: bold;">Do not reply to the email or contact the senders in any way.<br></li>
+                                                                    <li style="padding-bottom: 6px;font-weight: bold;">If you have clicked on a link in the email, do not supply any information on the website that may open.&nbsp;<br></li>
+                                                                    <li style="font-weight: bold;">Do not open any attachments that arrive with the email.<br></li>
+                                                                </ul>
+                                                                </li>
+                                        </ul>
+                                    </section>
+                                </div>
+                                <div class="col-md-9 col-xl-5 offset-xl-1 text-nowrap" style="text-align: center;">
+                                    <div class="row">
+                                        <div class="col" style="margin-top: 154px;margin-bottom: -227px;">
+                                            <div class="dropdown d-xl-flex m-auto" style="width: 360px;"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Watch this video to learn more about Phishing&nbsp;</button>
+                                                <div class="dropdown-menu" role="menu" style="width: 389px;height: 261px;"><iframe class="d-xl-flex" allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/R12_y2BhKbE" width="560" height="315" style="padding: 28px;width: 400px;height: 237px;padding-top: 7px;padding-bottom: 7px;"></iframe></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 302px;">
+                                        <div class="col offset-md-0">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <h1 style="font-size: 18px;"><br><strong>What if you've already fallen into the trap?</strong><br><br></h1>
+                                                    <ul>
+                                                        <li style="font-size: 16px;padding: 3px;padding-bottom: 6px;">If you have provided a password that you use for&nbsp;<br>other sites, change it immediately.<br></li>
+                                                        <li style="padding: 3px;">&nbsp;If you have communicated your credit card details&nbsp;<br>, notify your bank immediately.<br></li>
+                                                        <li style="font-size: 16px;padding: 3px;">&nbsp;If you have made a bank transfer, your bank details&nbsp;<br>or hackers might have been able to&nbsp;&nbsp;access&nbsp;&nbsp;<br>your personal information<br><br></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12 offset-xl-0" style="margin-top: 44px;">
+                                            <ul class="list-group" style="margin-top: 17px;">
+                                                <li class="list-group-item"><span style="font-weight: bold;"><br>Take our phishing test to find out if you would be&nbsp;<br>caught by cyber criminals.&nbsp;You can also take training to&nbsp;<br>improve your knowledge.&nbsp;<br></span>
+                                                    <div
+                                                        class="m-5">
+                                                        <div class="text-center m-3"><a href="{% url 'quiz'%}"> <button class="btn btn-primary btn-lg border rounded-0 ripple-effect" type="button" style="width: 300px;">Test Yourself !</button></a></div>
+                                        </div>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer class="bg-white sticky-footer" style="background-color: rgb(235,11,11);">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-sm-3 col-md-4 col-xl-4 item text" style="margin-top: 4px;"><a href="#"><img style="height: 79px;width: 136px;background-color: rgba(255,255,255,0);background-image: url(&quot;assets/img/phishing_email.png&quot;);" src="/static/quiz/assets/img/phishing_email.png"></a><span style="background-color: rgba(40,45,50,0);font-size: 15px;margin-left: 16px;">&nbsp;Phishing Email</span></div>
+                <div
+                    class="col-sm-4 col-md-5 col-xl-3 offset-xl-1">
+                    <h3 class="text-left d-xl-flex" style="margin-top: 13px;width: 204px;margin-left: 25px;">Pages</h3>
+                    <ul style="list-style-type: none;">
+                                    <li><a href="{% url 'dashboard'%}">Dashboard</a></li>
+                                    <li><a href="{% url 'advice'%}">Advice</a></li>
+                                    <li><a href="{% url 'quiz'%}">Test yourself</a></li>
+                    </ul>
+            </div>
+            <div class="col-sm-5 col-md-3 col-xl-3 offset-xl-1 item">
+                <h3 style="margin-top: 13px;margin-left: 24px;">Help</h3>
+                <ul style="list-style-type: none;">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact US</a></li>
+                    <li><span style="margin-right: 35px;margin-left: 5px;"><i class="fa fa-facebook-official"></i></span><span style="margin-left: 2px;"><i class="fa fa-twitter"></i></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center my-auto copyright"><span><br>Shashank Ravikumar © 2020 &nbsp;Catching the Phish UEA<br><br></span></div>
+        </div>
+    </footer>
+    <script src="{% static 'advice/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'advice/assets/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'advice/assets/js/Advanced-NavBar---Multi-dropdown.js'%}"></script>
+    <script src="{% static 'advice/assets/js/Animated-Type-Heading.js'%}"></script>
+    <script src="{% static 'advice/assets/js/Button-Ripple-Effect-Animation-Wave-Pulse.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'advice/assets/js/theme.js'%}"></script>
+
+</body>
+
+
+
+
+
+</html>

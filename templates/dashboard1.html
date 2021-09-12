@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Brand</title>
+    <link rel="stylesheet" href="{% static 'dashboard/assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{% static 'dashboard/assets/fonts/fontawesome-all.min.css'%}">
+    <link rel="stylesheet" href="{% static 'dashboard/assets/fonts/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'dashboard/assets/fonts/ionicons.min.css'%}">
+    <link rel="stylesheet" href="{% static 'dashboard/assets/fonts/fontawesome5-overrides.min.css'%}">
+    <link rel="stylesheet" href="{% static 'dashboard/assets/css/Button-Hover-Animate.css'%}">
+    <link rel="stylesheet" href="{% static 'dashboard/assets/css/Button-Ripple-Effect-Animation-Wave-Pulse.css'%}">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar" style="background-image: url(/static/dashboard/assets/img/beautiful-color-gradients-backgrounds-091-eternal-constance.png);">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="icon ion-ios-infinite" id="brand-logo"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1" style="padding-right: 15px;">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="padding-right: 30px;">Dashboard</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'advice'%}" style="padding-right: 30px;">Advice</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'quiz' %}" style="padding-right: 30px;">Test Yourself</a></li>
+                    <li class="nav-item dropdown" style="height: auto;font-size: 15px;"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgba(255,255,255,0.71);">Welcome , {{request.user}}&nbsp;<img class="border rounded-circle img-profile" src="{{ request.user.profile.profile_pic.url}}" style="height: 28px;width: 28px;"></a>
+                        <div
+                            class="dropdown-menu" role="menu" id="dropdonw-items"><a class="dropdown-item" role="presentation" href="{% url 'profile'%}">Profile</a><a class="dropdown-item" role="presentation" href="{% url 'logout'%}">Logout</a></div>
+        </li>
+        </ul>
+        </div>
+        </div>
+    </nav>
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content" style="background-color: #e3e3e3;">
+                <div class="container-fluid" style="margin-bottom: 35px;">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0" style="margin-top: 21px;font-size: 33px;">Dashboard</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-lg-7 col-xl-5 offset-md-2 offset-lg-2 offset-xl-3 mb-4">
+                            <div class="card shadow border-left-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col-10 col-sm-11 col-md-10 mr-2">
+                                            <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span style="font-size: 16px;">Highscore for&nbsp; {{request.user}}</span></div>
+
+                                            <div class="text-dark d-flex d-md-flex d-lg-flex d-xl-flex justify-content-center justify-content-md-center justify-content-lg-center justify-content-xl-center font-weight-bold h5 mb-0"
+                                                style="font-size: 23px;"><span class="d-sm-flex justify-content-sm-center">{{highscore.total_score}}</span></div>
+
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-4 offset-lg-1 offset-xl-0">
+                            <h1 class="d-xl-flex justify-content-xl-center">News</h1>
+                            {% for new, des, i in mylist %}
+
+                            <div class="row" style="margin-bottom: 50px;" >
+                                <div class="card"><img class="card-img-top w-100 d-block" src="{{i}}" style="height: 150px;">
+                                    <div class="card-body" style="margin-bottom: -9px;">
+                                        <h4 class="card-title" style="font-size: 22px;">{{new}}</h4>
+                                        {{value | linebreaks}}
+                                        <p class="card-text">{{des}}</p>
+                                        {{value | linebreaks}}
+                                    </div>
+                                    <div class="m-auto"></div>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+                            <div class="row" style="margin-top: 11px;">
+                                <div class="col-lg-12 col-xl-12 offset-lg-0 offset-xl-0">
+                                    <div class="card shadow mb-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 offset-xl-0" style="margin-top: 55px;">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0" style="font-size: 30px;">What is Phishing</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="margin-top: 20px;margin-bottom: 19px;">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <h6 class="mb-0" style="font-size: 20px;"><br>&nbsp;<strong>Phishing</strong>&nbsp;is sending fake unsolicited emails that ask recipients, under various pretexts, to click on a link leading to a fake website or open a malicious attachment.&nbsp;The
+                                                    hacker collects the information provided there and uses it to divert funds to his advantage.&nbsp;The fake website, like email, looks authentic, as it is often a certified copy of the financial institution
+                                                    or business site.<br><br></h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item" style="margin-top: 28px;margin-bottom: 13px;">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <h6 class="mb-0" style="font-size: 20px;"><br>As defined by&nbsp;<a href="https://www.nist.gov/"><strong>NIST</strong></a>&nbsp;,&nbsp;<a href="https://csrc.nist.gov/glossary/term/phishing"><strong>phishing</strong></a>&nbsp;is a technique for trying
+                                                    to acquire sensitive data, such as bank account numbers, through fraudulent solicitation by email or on a website, in which the author impersonates a legitimate business or a reputable person.<br><br></h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item" style="margin-top: 17px;margin-bottom: 24px;">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <h6 class="mb-0" style="font-size: 20px;"><br>According to&nbsp;<a href="https://www.ssi.gouv.fr/"><strong>ANSSI</strong></a>&nbsp;,&nbsp;<a href="https://www.ssi.gouv.fr/entreprise/principales-menaces/cybercriminalite/attaque-par-hameconnage-phishing/">phishing</a>&nbsp;attacks&nbsp;are
+                                                    aimed at obtaining the bank details or login credentials to financial services of the recipient of legitimate seeming emails in order to steal his money.The main reason why these attacks are so successful
+                                                    is the users themselves.&nbsp;Thus, our website aims to raise awareness of the threats of phishing to minimize losses.&nbsp;we suggest that you test your security by assessing your level of awareness
+                                                    and find out to what extent you are able to determine if an email is fraudulent.&nbsp;<br><br></h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-5 offset-xl-0" style="margin-bottom: 20px;">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col mr-2">
+                                                    <h6 class="text-center mb-0" style="font-weight: bold;">To get a better understanding of how you could be phished , try our quiz.</h6>
+                                                </div>
+                                                <div class="col-xl-4"><img src="/static/dashboard/assets/img/images.png" style="width: 106px;height: 43px;"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-9 col-sm-5 col-md-4 col-xl-3 offset-md-2 offset-lg-5 m-auto"><a href="{% url 'quiz'%}"  ><button class="btn btn-primary btn-lg border rounded-0 d-xl-flex m-auto justify-content-xl-center align-items-xl-center ripple-effect" type="button" style="width: 200px;">Take the Quiz</button></a></div>
+                                <div class="col-9 col-sm-6 col-md-4 col-xl-3 offset-xl-1 m-auto"
+                                     style="margin-top: 25px;width: 171px;"><a href="{% url 'advice' %}"  ><button class="btn btn-primary btn-lg border rounded-0 d-xl-flex m-auto justify-content-xl-center align-items-xl-center ripple-effect" type="button" style="width: 200px;">Read our advice&nbsp;</button></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-white sticky-footer" style="background-color: rgb(235,11,11);">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-sm-3 col-md-4 col-xl-4 item text" style="margin-top: 4px;"><a href="#"><img style="height: 79px;width: 136px;background-color: rgba(255,255,255,0);background-image: url(&quot;assets/img/phishing_email.png&quot;);" src="/static/quiz/assets/img/phishing_email.png"></a><span style="background-color: rgba(40,45,50,0);font-size: 15px;margin-left: 16px;">&nbsp;Phishing Email</span></div>
+                <div
+                    class="col-sm-4 col-md-5 col-xl-3 offset-xl-1">
+                    <h3 class="text-left d-xl-flex" style="margin-top: 13px;width: 204px;margin-left: 25px;">Pages</h3>
+                    <ul style="list-style-type: none;">
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Advice</a></li>
+                        <li><a href="#">Test yourself</a></li>
+                    </ul>
+            </div>
+            <div class="col-sm-5 col-md-3 col-xl-3 offset-xl-1 item">
+                <h3 style="margin-top: 13px;margin-left: 24px;">Help</h3>
+                <ul style="list-style-type: none;">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact US</a></li>
+                    <li><span style="margin-right: 35px;margin-left: 5px;"><i class="fa fa-facebook-official"></i></span><span style="margin-left: 2px;"><i class="fa fa-twitter"></i></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center my-auto copyright"><span><br>Shashank Ravikumar © 2020 &nbsp;Catching the Phish UEA<br><br></span></div>
+        </div>
+    </footer>
+    <script src="{% static 'dashboard/assets/js/jquery.min.js'%}"></script>
+    <script src="{% static 'dashboard/assets/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'dashboard/assets/js/Button-Ripple-Effect-Animation-Wave-Pulse.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'dashboard/assets/js/theme.js'%}"></script>
+</body>
+
+
+
+
+
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="overflow-y: hidden;">
+
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="{% static 'register/assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+</head>
+
+<body class="bg-gradient-primary" style="margin-top: 150p;background-repeat: no-repeat;">
+    <div class="container" style="padding-top: 63px;">
+        <div class="card shadow-lg d-xl-flex o-hidden border-0 my-5" style="height: 670px;background-image: url(&quot;assets/img/charles-deluvio-Lks7vei-eAg-unsplash.png&quot;);background-size: cover;background-repeat: no-repeat;background-position: top;">
+            <div class="card-body p-0" style="height: 593px;margin-top: 30px;">
+                <div class="row d-xl-flex justify-content-xl-center">
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4" style="font-size: 35px;">Create an Account!</h4>
+                            </div>
+                            <form method="POST" class="user">
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-xl-12 offset-xl-0 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="Username" name="username"></div>
+                                </div>
+                                <div class="form-group" style="margin-top: 32px;"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address" name="email"></div>
+                                <div class="form-group row" style="margin-top: 36px;">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password1"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Repeat Password" name="password2"></div>
+                                    <div>{{form.errors}}</div>
+                                </div><button class="btn btn-primary btn-block text-white btn-user" type="submit" style="margin-top: 42px;">Register Account</button>
+                                <hr>
+
+                            </form>
+                            <div class="text-center"><a class="small" href="{% url 'reset_password' %}">Forgot Password?</a></div>
+                            <div class="text-center"><a class="small" href="{% url 'login' %}">Already have an account? Login!</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'register/assets/js/jquery.min.js'%}"></script>
+    <script src="{% static 'register/assets/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'register/assets/js/theme.js'%}"></script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+.small, small {
+}
+
+@media (min-width: 1200px) {
+  .small, small {
+  }
+}
+
+@media screen and (min-width: 900px) {
+  #createAccount {
+    display: none;
+  }
+}
+

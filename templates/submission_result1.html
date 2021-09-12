@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-image: url('/static/img/star.jpg');background-repeat: no-repeat;background-size: cover;text-align:center;">
+    <div>
+        <div class="row">
+            <div class="col-md-3 col-xl-3 offset-md-4 offset-xl-5" style="margin-top: 128px;padding-left: 500px;padding-right: 500px;">
+                <h1 class="text-center" style="color: rgb(255,255,255);">{{ attempted_question.question.html|safe }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 offset-xl-2" style="margin-top: 59px;">
+                <p style="font-size: 30px;color: rgb(255,255,255);">Your Answer is : {{ attempted_question.selected_choice.html|safe }}</p>
+            </div>
+        </div>
+        {% if attempted_question.selected_choice.is_correct %}
+        <div class="row">
+            <div class="col-xl-5 offset-xl-4" style="margin-top: 80px;">
+                <p class="text-center" style="font-size: 25px;color: rgb(255,255,255);">Welll done !! Your answer is correct  </p>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class="col-xl-5 offset-xl-4" style="margin-top: 80px;">
+                <p class="text-center" style="font-size: 25px;color: rgb(255,255,255);">Your answer is incorrect </p>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-xl-3 offset-xl-5" style="margin-top: 48px;"><a href="{% url 'MCQ_quiz' %}"  ><button class="btn btn-primary" type="button" style="width: 315px;">Show next question</button></a></div>
+        </div>
+    </div>
+</body>
+</html>
