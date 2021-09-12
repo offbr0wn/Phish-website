@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '67epwf!z7i8p&ut=tet%5f@@4)-k_3*q_)&2t_jp!qke(ugyf9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['cryptic-meadow-81808.herokuapp.com ','127.0.0.1']
 
